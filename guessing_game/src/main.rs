@@ -4,11 +4,11 @@ use std::io;
 
 fn main() {
     println!("This is the start of a guess game \n\n");
-    // check the user input
-    let random_number: i32 = rand::thread_rng().gen_range(1..=100);
-
     // random number
+    let random_number: u32 = rand::thread_rng().gen_range(1..=100);
+
     loop {
+        // check the user input
         let mut guess: String = String::new();
         println!("Please enter in a guess: ");
 
@@ -17,7 +17,7 @@ fn main() {
             .expect("failed to  read line");
 
         // it's probably the parse
-        let guess: i32 = match guess.trim().parse() {
+        let guess: u32 = match guess.trim().parse() {
             Ok(num) => num,
             Err(_) => continue,
         };
@@ -32,5 +32,6 @@ fn main() {
             }
         }
     }
+
     println!("The secret number is: {}", random_number);
 }
